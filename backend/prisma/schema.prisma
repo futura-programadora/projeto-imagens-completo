@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  email             String  @unique
+  senha          String
+  telefone    String
+  cidade    String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model admin {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome String
+  password   String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Parcerias {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome  String @unique
+  idade   String
+  profissao String 
+  numero  String
+  email   String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Contato {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  email  String
+  mensagem   String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+// HelpService
+
+model Profissional {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String  @unique
+  senha   String
+  telefone    String
+  cidade      String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Categorias {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome  String
+  sobre   String
+  email   String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Servico {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  servico   String
+  descricao   String
+  categoria    String
+  preco         String
+  pagamento   String
+  identificacao     String
+  email       String
+  numero      String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Patrocinados {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  servico   String
+  identificacao   String
+  img     String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Ajuda {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  email String
+  detalhes    String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Verificacao {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  contato     String
+  profissao    String
+  cnpj    String?
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Avaliacao {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  servico   String
+  avaliacao String
+  createdAt DateTime @default(now()) // Data de criação da conta
+}
+
+model Imagem {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String
+  legenda   String
+  url       String
+  criadoEm  DateTime @default(now())
+}

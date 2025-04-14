@@ -1,0 +1,10 @@
+body {
+  font-family: Arial;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+img {
+  width: 100%;
+  margin-bottom: 20px;
+}
